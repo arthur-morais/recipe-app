@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recipes/constants/routes.dart';
-import 'package:recipes/features/home/home_page.dart';
+import 'package:recipes/view/home/home_page.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
