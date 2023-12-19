@@ -7,7 +7,7 @@ Future<void> recipeDialog(
 }) {
   return showDialog<void>(
     context: context,
-    builder: (BuildContext context) {
+    builder: (context) {
       final double screenHeight = MediaQuery.of(context).size.height;
 
       return Dialog(
