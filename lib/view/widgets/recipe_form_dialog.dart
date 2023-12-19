@@ -32,35 +32,35 @@ Future<void> newRecipeFormDialog(
                   children: [
                     CustomTextFormField(
                       controller: nameController,
-                      fieldLabel: 'Recipe name',
+                      fieldLabel: 'Recipe Name',
                     ),
                     SizedBox(
                       height: screenSize.height * 0.025,
                     ),
-                    TextFormField(
+                    CustomTextFormField(
+                      fieldLabel: 'Ingredients and Measurements',
                       controller: ingredientsAndMeasurementsController,
-                      decoration: const InputDecoration(),
                     ),
                     SizedBox(
                       height: screenSize.height * 0.025,
                     ),
-                    TextFormField(
+                    CustomTextFormField(
+                      fieldLabel: 'Recipe Instructions',
                       controller: instructionsController,
-                      decoration: const InputDecoration(),
                     ),
                     SizedBox(
                       height: screenSize.height * 0.025,
                     ),
-                    TextFormField(
+                    CustomTextFormField(
+                      fieldLabel: 'Recipe Description',
                       controller: descriptionController,
-                      decoration: const InputDecoration(),
                     ),
                     SizedBox(
                       height: screenSize.height * 0.025,
                     ),
-                    TextFormField(
+                    CustomTextFormField(
+                      fieldLabel: 'Recipe Thumbnail URL',
                       controller: thumbnailUrlController,
-                      decoration: const InputDecoration(),
                     ),
                   ],
                 ),

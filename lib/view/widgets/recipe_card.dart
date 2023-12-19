@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recipes/constants/colors.dart';
 import 'package:recipes/constants/text_styles.dart';
 import 'package:recipes/view/widgets/recipe_dialog.dart';
 
@@ -46,7 +47,7 @@ class _RecipeCardState extends State<RecipeCard> {
               ),
               Container(
                 width: screenWidth * 0.8,
-                decoration: const BoxDecoration(color: Colors.blue),
+                decoration: const BoxDecoration(color: AppColors.primary),
                 child: Text(
                   widget.name,
                   style: AppTextStyles.big42w700,
