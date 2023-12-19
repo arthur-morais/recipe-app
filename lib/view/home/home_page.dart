@@ -1,9 +1,8 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:recipes/data/models/recipe.dart';
 import 'package:recipes/data/repositories/recipe_repository.dart';
 import 'package:recipes/view/widgets/recipe_card.dart';
+import 'package:recipes/view/widgets/recipe_form_dialog.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -28,7 +27,6 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       _isLoading = false;
     });
-    print(_recipes);
   }
 
   @override
@@ -36,7 +34,9 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          newRecipeFormDialog(context);
+        },
         child: const Icon(Icons.add),
       ),
       body: _isLoading
