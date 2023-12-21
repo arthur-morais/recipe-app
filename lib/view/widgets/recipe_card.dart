@@ -26,13 +26,19 @@ class _RecipeCardState extends State<RecipeCard> {
   @override
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
+    final double screenHeight = MediaQuery.of(context).size.height;
 
     return GestureDetector(
       onTap: () {
-        recipeDialog(
-          context,
-          mealInstructions: widget.instructions,
-          mealIngredientsAndMeasurements: widget.ingredientsAndMeasurements,
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return RecipeDialog(
+              mealInstructions: widget.instructions,
+              mealIngredientsAndMeasurements: widget.ingredientsAndMeasurements,
+              mealName: widget.name,
+            );
+          },
         );
       },
       child: Padding(
@@ -46,11 +52,16 @@ class _RecipeCardState extends State<RecipeCard> {
                 width: screenWidth * 0.8,
               ),
               Container(
+                padding: EdgeInsets.symmetric(
+                  vertical: screenHeight * 0.015,
+                  horizontal: screenWidth * 0.015,
+                ),
                 width: screenWidth * 0.8,
                 decoration: const BoxDecoration(color: AppColors.primary),
                 child: Text(
                   widget.name,
-                  style: AppTextStyles.big42w700,
+                  style:
+                      AppTextStyles.medium24w700.apply(color: AppColors.white),
                   textAlign: TextAlign.center,
                 ),
               ),
