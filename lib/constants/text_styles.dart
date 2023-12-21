@@ -14,4 +14,10 @@ class AppTextStyles {
     fontWeight: FontWeight.w400,
     fontFamily: 'Poppins',
   );
+
+  static const TextStyle small14w700 = TextStyle(
+    fontSize: 14,
+    fontWeight: FontWeight.w700,
+    fontFamily: 'Poppins',
+  );
 }
