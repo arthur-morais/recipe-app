@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recipes/view/widgets/custom_text_form_field.dart';
+import 'package:recipes/constants/widgets/custom_text_form_field.dart';
 
 Future<void> newRecipeFormDialog(
   BuildContext context,
