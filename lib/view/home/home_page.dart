@@ -72,6 +72,11 @@ class _HomePageState extends State<HomePage>
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          centerTitle: true,
+          title: Text(
+            'Smart Cooking',
+            style: AppTextStyles.medium32w700,
+          ),
           bottom: TabBar(
             controller: _tabController,
             tabs: homeTabs,
@@ -86,7 +91,7 @@ class _HomePageState extends State<HomePage>
         body: TabBarView(controller: _tabController, children: <Widget>[
           _isLoading
               ? const Center(
-                  child: CircularProgressIndicator(color: Colors.blue),
+                  child: CircularProgressIndicator(color: AppColors.primary),
                 )
               : ListView.builder(
                   itemCount: _recipes.length,
