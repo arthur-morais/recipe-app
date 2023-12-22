@@ -84,7 +84,12 @@ class _HomePageState extends State<HomePage>
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
-            newRecipeFormDialog(context);
+            showDialog(
+              context: context,
+              builder: (context) {
+                return RecipeFormDialog();
+              },
+            );
           },
           child: const Icon(Icons.add),
         ),
@@ -104,8 +109,17 @@ class _HomePageState extends State<HomePage>
                     description: _recipes[index].description,
                   ),
                 ),
-          Center(
-            child: Text('Custom Recipes'),
+          const Center(
+            child: RecipeCard(
+              name: 'Bolo',
+              ingredientsAndMeasurements: [
+                '1/3 de colher de amor, carinho e sedução'
+              ],
+              thumbnailUrl:
+                  'https://img.buzzfeed.com/thumbnailer-prod-us-east-1/45b4efeb5d2c4d29970344ae165615ab/FixedFBFinal.jpg',
+              instructions: ['Instruções aqui minha rapazinhada'],
+              description: 'Esse bolo é do balcaobaco',
+            ),
           ),
         ]));
   }
