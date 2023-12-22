@@ -44,4 +44,10 @@ class AppTextStyles {
     fontWeight: FontWeight.w700,
     fontFamily: 'Poppins',
   );
+
+  static const TextStyle small12w500 = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w500,
+    fontFamily: 'Poppins',
+  );
 }
