@@ -3,8 +3,8 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:recipes/constants/colors.dart';
 import 'package:recipes/constants/text_styles.dart';
-import 'package:recipes/data/models/recipe.dart';
-import 'package:recipes/data/repositories/recipe_repository.dart';
+import 'package:recipes/models/recipe.dart';
+import 'package:recipes/repositories/recipe_repository.dart';
 import 'package:recipes/view/widgets/recipe_card.dart';
 import 'package:recipes/view/widgets/recipe_form_dialog.dart';
 
@@ -73,7 +73,7 @@ class _HomePageState extends State<HomePage>
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: Text(
+          title: const Text(
             'Smart Cooking',
             style: AppTextStyles.medium32w700,
           ),

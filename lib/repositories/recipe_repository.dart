@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:recipes/data/models/recipe.dart';
+import 'package:recipes/models/recipe.dart';
 import 'package:http/http.dart' as http;
 
 class RecipeRepository {
