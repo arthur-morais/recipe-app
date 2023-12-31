@@ -3,9 +3,12 @@ import 'package:recipes/constants/colors.dart';
 import 'package:recipes/constants/validator.dart';
 import 'package:recipes/constants/widgets/custom_button.dart';
 import 'package:recipes/constants/widgets/custom_text_form_field.dart';
+import 'package:recipes/database/recipes_db.dart';
 
 class RecipeFormDialog extends StatefulWidget {
-  RecipeFormDialog({super.key});
+  RecipeFormDialog({
+    super.key,
+  });
 
   final formKey = GlobalKey<FormState>();
   final nameController = TextEditingController();
@@ -19,6 +22,8 @@ class RecipeFormDialog extends StatefulWidget {
 }
 
 class _RecipeFormDialogState extends State<RecipeFormDialog> {
+  final recipeDB = RecipesDB();
+
   @override
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
@@ -84,15 +89,16 @@ class _RecipeFormDialogState extends State<RecipeFormDialog> {
                     textColor: AppColors.white,
                     onPressed: () async {
                       if (widget.formKey.currentState!.validate()) {
-                        Future.delayed(const Duration(seconds: 2));
-                        return await showDialog(
-                          context: context,
-                          builder: (context) {
-                            return Container(
-                              child: const Text('New recipe has been created!'),
-                            );
-                          },
+                        await recipeDB.create(
+                          name: widget.nameController.text,
+                          instructions: widget.instructionsController.text,
+                          thumbnailUrl: widget.thumbnailUrlController.text,
+                          ingredientsAndMeasurement:
+                              widget.ingredientsAndMeasurementsController.text,
+                          description: widget.descriptionController.text,
                         );
+                        if (!mounted) return;
+                        Navigator.pop(context);
                       }
                     },
                   ),
