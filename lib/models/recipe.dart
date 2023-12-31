@@ -4,8 +4,10 @@ class RecipeModel {
   final String name;
   final List ingredientsAndMeasurement;
   final String description;
+  final int? id;
 
   RecipeModel({
+    this.id,
     required this.instructions,
     required this.thumbnailUrl,
     required this.name,
