@@ -4,10 +4,10 @@ class RecipeModelUser {
   final String name;
   final String ingredientsAndMeasurement;
   final String description;
-  final int? id;
+  final int id;
 
   RecipeModelUser({
-    this.id,
+    required this.id,
     required this.instructions,
     required this.thumbnailUrl,
     required this.name,
