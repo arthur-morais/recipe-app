@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:recipes/database/recipes_db.dart';
 
 import '../../constants/colors.dart';
 import '../../constants/text_styles.dart';
+import 'delete_button.dart';
 
 class RecipeDialogUser extends StatefulWidget {
   const RecipeDialogUser({
@@ -9,17 +11,21 @@ class RecipeDialogUser extends StatefulWidget {
     required this.mealInstructions,
     required this.mealIngredientsAndMeasurements,
     required this.mealName,
+    required this.id,
   });
 
   final String mealInstructions;
   final String mealIngredientsAndMeasurements;
   final String mealName;
+  final int id;
 
   @override
   State<RecipeDialogUser> createState() => _RecipeDialogUserState();
 }
 
 class _RecipeDialogUserState extends State<RecipeDialogUser> {
+  final recipeDB = RecipesDB();
+
   @override
   Widget build(BuildContext context) {
     final double screenHeight = MediaQuery.of(context).size.height;
@@ -91,6 +97,34 @@ class _RecipeDialogUserState extends State<RecipeDialogUser> {
                   Navigator.pop(context);
                 },
                 icon: const Icon(Icons.arrow_back_ios),
+              ),
+              Row(
+                children: [
+                  TextButton(
+                    onPressed: () {},
+                    child: SizedBox(
+                      width: screenWidth * 0.15,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Icon(
+                            Icons.edit,
+                            color: AppColors.white,
+                            size: screenWidth * 0.05,
+                          ),
+                          Text(
+                            'EDIT',
+                            style: AppTextStyles.small16w700
+                                .apply(color: AppColors.white),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  DeleteButton(
+                    id: widget.id,
+                  ),
+                ],
               ),
             ],
           ),
