@@ -12,8 +12,10 @@ class RecipeCardUser extends StatefulWidget {
     required this.thumbnailUrl,
     required this.instructions,
     required this.description,
+    required this.id,
   });
 
+  final int id;
   final String name;
   final String ingredientsAndMeasurements;
   final String thumbnailUrl;
@@ -36,6 +38,7 @@ class _RecipeCardUserState extends State<RecipeCardUser> {
           context: context,
           builder: (BuildContext context) {
             return RecipeDialogUser(
+              id: widget.id,
               mealInstructions: widget.instructions,
               mealIngredientsAndMeasurements: widget.ingredientsAndMeasurements,
               mealName: widget.name,
