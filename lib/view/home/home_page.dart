@@ -148,6 +148,7 @@ class _HomePageState extends State<HomePage>
                         itemBuilder: (context, index) {
                           final recipe = recipes[index];
                           return RecipeCardUser(
+                            id: recipe.id,
                             name: recipe.name,
                             ingredientsAndMeasurements:
                                 recipe.ingredientsAndMeasurement,
