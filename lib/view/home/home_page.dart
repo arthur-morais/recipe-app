@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recipes/constants/colors.dart';
+import 'package:recipes/constants/tabs.dart';
 import 'package:recipes/constants/text_styles.dart';
 import 'package:recipes/database/recipes_db.dart';
 import 'package:recipes/models/recipe.dart';
@@ -18,6 +19,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
+
   late TabController _tabController;
   // ignore: unused_field
   int _selectedIndex = 0;
@@ -27,37 +29,24 @@ class _HomePageState extends State<HomePage>
   Future<List<RecipeModelUser>>? futureRecipes;
   final recipeDB = RecipesDB();
 
-  List<Tab> homeTabs = <Tab>[
-    Tab(
-      child: Container(
-        alignment: Alignment.center,
-        child: const Text(
-          'Default Recipes',
-          style: AppTextStyles.small14w700,
-        ),
-      ),
-    ),
-    Tab(
-      child: Container(
-        alignment: Alignment.center,
-        child: const Text(
-          'Custom Recipes',
-          style: AppTextStyles.small14w700,
-        ),
-      ),
-    ),
-  ];
-
   void fetchRecipes() {
     setState(() {
       futureRecipes = recipeDB.fetchAll();
+    });
+  }
+  
+  Future<void> getRecipes() async {
+    _recipes = await RecipeRepository.getRecipe();
+    setState(() {
+      _isLoading = false;
     });
   }
 
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: homeTabs.length, vsync: this);
+    _tabController =
+        TabController(length: AppTabs.homeTabs.length, vsync: this);
     _tabController.addListener(() {
       setState(() {
         _selectedIndex = _tabController.index;
@@ -73,17 +62,9 @@ class _HomePageState extends State<HomePage>
     super.dispose();
   }
 
-  Future<void> getRecipes() async {
-    _recipes = await RecipeRepository.getRecipe();
-    setState(() {
-      _isLoading = false;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
-    double screenHeight = MediaQuery.of(context).size.height;
-
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
@@ -93,7 +74,7 @@ class _HomePageState extends State<HomePage>
           ),
           bottom: TabBar(
             controller: _tabController,
-            tabs: homeTabs,
+            tabs: AppTabs.homeTabs,
           ),
         ),
         floatingActionButton: FloatingActionButton(
@@ -104,7 +85,6 @@ class _HomePageState extends State<HomePage>
                 return RecipeFormDialog();
               },
             );
-            fetchRecipes();
           },
           child: const Icon(Icons.add),
         ),
@@ -141,9 +121,7 @@ class _HomePageState extends State<HomePage>
                         style: AppTextStyles.medium32w700,
                       ))
                     : ListView.separated(
-                        separatorBuilder: (context, index) => SizedBox(
-                          height: screenHeight * 0.015,
-                        ),
+                        separatorBuilder: (context, index) => const SizedBox(),
                         itemCount: recipes.length,
                         itemBuilder: (context, index) {
                           final recipe = recipes[index];
