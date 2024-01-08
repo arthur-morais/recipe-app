@@ -3,6 +3,7 @@ import 'package:recipes/constants/routes.dart';
 import 'package:recipes/database/recipes_db.dart';
 
 import '../../constants/colors.dart';
+import '../../constants/snackbars.dart';
 import '../../constants/text_styles.dart';
 
 class DeleteButton extends StatefulWidget {
@@ -27,6 +28,9 @@ class _DeleteButtonState extends State<DeleteButton> {
     return TextButton(
       onPressed: () async {
         recipeDB.delete(widget.id);
+        ScaffoldMessenger.of(context).showSnackBar(
+          AppSnackbars.defaultSnackbar('Receita deletada com sucesso!'),
+        );
         Navigator.pushReplacementNamed(
           context,
           NamedRoute.initial,

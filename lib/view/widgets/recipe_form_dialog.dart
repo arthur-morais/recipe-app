@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recipes/constants/colors.dart';
+import 'package:recipes/constants/snackbars.dart';
 import 'package:recipes/constants/validator.dart';
 import 'package:recipes/constants/widgets/custom_button.dart';
 import 'package:recipes/constants/widgets/custom_text_form_field.dart';
@@ -98,6 +99,10 @@ class _RecipeFormDialogState extends State<RecipeFormDialog> {
                           ingredientsAndMeasurement:
                               widget.ingredientsAndMeasurementsController.text,
                           description: widget.descriptionController.text,
+                        );
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          AppSnackbars.defaultSnackbar(
+                              'Receita criada com sucesso!'),
                         );
                         if (!mounted) return;
                         Navigator.pushReplacementNamed(
