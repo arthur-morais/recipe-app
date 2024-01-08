@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recipes/constants/routes.dart';
 import 'package:recipes/database/recipes_db.dart';
 
 import '../../constants/colors.dart';
@@ -26,7 +27,10 @@ class _DeleteButtonState extends State<DeleteButton> {
     return TextButton(
       onPressed: () async {
         recipeDB.delete(widget.id);
-        Navigator.pop(context);
+        Navigator.pushReplacementNamed(
+          context,
+          NamedRoute.initial,
+        );
       },
       child: SizedBox(
         width: screenWidth * 0.2,

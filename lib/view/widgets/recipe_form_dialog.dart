@@ -5,6 +5,8 @@ import 'package:recipes/constants/widgets/custom_button.dart';
 import 'package:recipes/constants/widgets/custom_text_form_field.dart';
 import 'package:recipes/database/recipes_db.dart';
 
+import '../../constants/routes.dart';
+
 class RecipeFormDialog extends StatefulWidget {
   RecipeFormDialog({
     super.key,
@@ -98,7 +100,10 @@ class _RecipeFormDialogState extends State<RecipeFormDialog> {
                           description: widget.descriptionController.text,
                         );
                         if (!mounted) return;
-                        Navigator.pop(context);
+                        Navigator.pushReplacementNamed(
+                          context,
+                          NamedRoute.initial,
+                        );
                       }
                     },
                   ),
