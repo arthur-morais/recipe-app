@@ -68,16 +68,19 @@ class _HomePageState extends State<HomePage>
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
-          title: const Text(
+          title: Text(
             'Smart Cooking',
-            style: AppTextStyles.medium32w700,
+            style: AppTextStyles.medium32w700.apply(color: AppColors.neutral90),
           ),
           bottom: TabBar(
             controller: _tabController,
             tabs: AppTabs.homeTabs,
+            indicatorColor: AppColors.primary,
+            labelColor: AppColors.primary,
           ),
         ),
         floatingActionButton: FloatingActionButton(
+          backgroundColor: AppColors.primary,
           onPressed: () {
             showDialog(
               context: context,
@@ -86,7 +89,8 @@ class _HomePageState extends State<HomePage>
               },
             );
           },
-          child: const Icon(Icons.add),
+          
+          child: const Icon(Icons.add, color: AppColors.white,),
         ),
         body: TabBarView(controller: _tabController, children: <Widget>[
           _isLoading
