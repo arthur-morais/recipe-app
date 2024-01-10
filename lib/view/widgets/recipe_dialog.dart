@@ -27,12 +27,14 @@ class _RecipeDialogState extends State<RecipeDialog> {
     return Dialog(
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: AppColors.primary,
           centerTitle: true,
           titleSpacing: 0,
-          automaticallyImplyLeading: false,
+          automaticallyImplyLeading: true,
+          leading: IconButton(onPressed: () {Navigator.pop(context);}, icon: Icon(Icons.arrow_back, color: AppColors.white,),),
           title: Text(
             widget.mealName,
-            style: AppTextStyles.small16w700,
+            style: AppTextStyles.small14w700.apply(color: AppColors.white),
           ),
         ),
         body: Padding(
@@ -75,23 +77,6 @@ class _RecipeDialogState extends State<RecipeDialog> {
                 ),
               ],
             ),
-          ),
-        ),
-        bottomNavigationBar: Container(
-          height: 50,
-          decoration: const BoxDecoration(color: AppColors.primary),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              IconButton(
-                padding: EdgeInsets.only(left: screenWidth * 0.05),
-                color: AppColors.white,
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                icon: const Icon(Icons.arrow_back_ios),
-              ),
-            ],
           ),
         ),
       ),
