@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:recipes/constants/colors.dart';
 import 'package:recipes/constants/snackbars.dart';
+import 'package:recipes/constants/text_styles.dart';
 import 'package:recipes/constants/validator.dart';
 import 'package:recipes/constants/widgets/custom_button.dart';
 import 'package:recipes/constants/widgets/custom_text_form_field.dart';
@@ -34,7 +35,7 @@ class _RecipeFormDialogState extends State<RecipeFormDialog> {
     return Dialog(
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Add a new custom recipe!'),
+          title: Text('Add a new custom recipe!', style: AppTextStyles.small16w700,),
         ),
         body: SingleChildScrollView(
           child: Padding(
@@ -100,6 +101,7 @@ class _RecipeFormDialogState extends State<RecipeFormDialog> {
                               widget.ingredientsAndMeasurementsController.text,
                           description: widget.descriptionController.text,
                         );
+                        // ignore: use_build_context_synchronously
                         ScaffoldMessenger.of(context).showSnackBar(
                           AppSnackbars.defaultSnackbar(
                               'Receita criada com sucesso!'),
