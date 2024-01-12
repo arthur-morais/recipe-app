@@ -3,7 +3,7 @@ import 'package:recipes/database/recipes_db.dart';
 
 import '../../constants/colors.dart';
 import '../../constants/text_styles.dart';
-import 'delete_button.dart';
+import '../../constants/widgets/delete_button.dart';
 
 class RecipeDialogUser extends StatefulWidget {
   const RecipeDialogUser({
@@ -11,9 +11,10 @@ class RecipeDialogUser extends StatefulWidget {
     required this.mealInstructions,
     required this.mealIngredientsAndMeasurements,
     required this.mealName,
-    required this.id,
+    required this.id, required this.mealDescription,
   });
 
+  final String mealDescription;
   final String mealInstructions;
   final String mealIngredientsAndMeasurements;
   final String mealName;
@@ -34,12 +35,13 @@ class _RecipeDialogUserState extends State<RecipeDialogUser> {
     return Dialog(
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: AppColors.primary,
           centerTitle: true,
           titleSpacing: 0,
           automaticallyImplyLeading: false,
           title: Text(
             widget.mealName,
-            style: AppTextStyles.small16w700,
+            style: AppTextStyles.small16w700.apply(color: AppColors.white),
           ),
         ),
         body: Padding(
@@ -51,6 +53,22 @@ class _RecipeDialogUserState extends State<RecipeDialogUser> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Text(
+                  'Meal Description',
+                  style: AppTextStyles.medium24w700
+                      .apply(color: AppColors.neutral90),
+                ),
+                SizedBox(
+                  height: screenHeight * 0.015,
+                ),
+                Text(
+                  widget.mealDescription,
+                  style: AppTextStyles.small14w400
+                      .apply(color: AppColors.neutral90),
+                ),
+                SizedBox(
+                  height: screenHeight * 0.015,
+                ),
                 Text(
                   'Ingredients and Measurements',
                   style: AppTextStyles.medium24w700

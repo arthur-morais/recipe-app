@@ -35,7 +35,7 @@ class _RecipeFormDialogState extends State<RecipeFormDialog> {
     return Dialog(
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Add a new custom recipe!', style: AppTextStyles.small16w700,),
+          title: const Text('Add a new custom recipe!', style: AppTextStyles.small16w700,),
         ),
         body: SingleChildScrollView(
           child: Padding(
@@ -104,9 +104,10 @@ class _RecipeFormDialogState extends State<RecipeFormDialog> {
                         // ignore: use_build_context_synchronously
                         ScaffoldMessenger.of(context).showSnackBar(
                           AppSnackbars.defaultSnackbar(
-                              'Receita criada com sucesso!'),
+                              'Receita criada com sucesso!',),
                         );
                         if (!mounted) return;
+                        Navigator.pop(context);
                         Navigator.pushReplacementNamed(
                           context,
                           NamedRoute.initial,

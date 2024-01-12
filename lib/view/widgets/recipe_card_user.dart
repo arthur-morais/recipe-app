@@ -42,6 +42,7 @@ class _RecipeCardUserState extends State<RecipeCardUser> {
               mealInstructions: widget.instructions,
               mealIngredientsAndMeasurements: widget.ingredientsAndMeasurements,
               mealName: widget.name,
+              mealDescription: widget.description,
             );
           },
         );

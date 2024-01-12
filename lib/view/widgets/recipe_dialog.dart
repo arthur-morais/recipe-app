@@ -7,12 +7,13 @@ class RecipeDialog extends StatefulWidget {
     super.key,
     required this.mealInstructions,
     required this.mealIngredientsAndMeasurements,
-    required this.mealName,
+    required this.mealName, required this.mealDescription,
   });
 
   final List mealInstructions;
   final List mealIngredientsAndMeasurements;
   final String mealName;
+  final String mealDescription;
 
   @override
   State<RecipeDialog> createState() => _RecipeDialogState();
@@ -31,7 +32,7 @@ class _RecipeDialogState extends State<RecipeDialog> {
           centerTitle: true,
           titleSpacing: 0,
           automaticallyImplyLeading: true,
-          leading: IconButton(onPressed: () {Navigator.pop(context);}, icon: Icon(Icons.arrow_back, color: AppColors.white,),),
+          leading: IconButton(onPressed: () {Navigator.pop(context);}, icon: const Icon(Icons.arrow_back, color: AppColors.white,),),
           title: Text(
             widget.mealName,
             style: AppTextStyles.small14w700.apply(color: AppColors.white),
@@ -46,6 +47,22 @@ class _RecipeDialogState extends State<RecipeDialog> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Text(
+                  'Meal Description',
+                  style: AppTextStyles.medium24w700
+                      .apply(color: AppColors.neutral90),
+                ),
+                SizedBox(
+                  height: screenHeight * 0.015,
+                ),
+                Text(
+                  widget.mealDescription,
+                  style: AppTextStyles.small14w400
+                      .apply(color: AppColors.neutral90),
+                ),
+                SizedBox(
+                  height: screenHeight * 0.015,
+                ),
                 Text(
                   'Ingredients and Measurements',
                   style: AppTextStyles.medium24w700
