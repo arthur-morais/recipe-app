@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:recipes/constants/routes.dart';
 import 'package:recipes/database/recipes_db.dart';
 
-import '../../constants/colors.dart';
-import '../../constants/snackbars.dart';
-import '../../constants/text_styles.dart';
+import '../colors.dart';
+import '../snackbars.dart';
+import '../text_styles.dart';
 
 class DeleteButton extends StatefulWidget {
   const DeleteButton({
@@ -31,6 +31,7 @@ class _DeleteButtonState extends State<DeleteButton> {
         ScaffoldMessenger.of(context).showSnackBar(
           AppSnackbars.defaultSnackbar('Receita deletada com sucesso!'),
         );
+        Navigator.pop(context);
         Navigator.pushReplacementNamed(
           context,
           NamedRoute.initial,
